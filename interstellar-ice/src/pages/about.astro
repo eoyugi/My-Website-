@@ -1,9 +1,21 @@
 ---
+const pageTitle = "About Me";
+const identity = {
+  firstName: "Elly",
+  country: "Kenya",
+  occupation: "Computer science student",
+  hobbies: ["Playing soccer", "listening to music", "partying with friends", "watching movies", "reading books"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>About Me</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
     <nav>
@@ -12,8 +24,27 @@
       <a href="/blog/">Blog</a>
     </nav>
 
-    <h1>About Me</h1>
+    <h1>{pageTitle}</h1>
     <p>I am working through Astro's introductory tutorial. This is the second page on my website!</p>
+
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>I live in {identity.country} and currently am a {identity.occupation}.</li>
+      {identity.hobbies.length >= 2 &&
+        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+      }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
   </body>
 </html>
 
