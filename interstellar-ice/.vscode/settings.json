@@ -1,0 +1,16 @@
+{
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "editor.formatOnSave": false,
+    "editor.quickSuggestions": {
+      "other": "on",
+      "comments": false,
+      "strings": false
+    }
+  },
+  "files.associations": {
+    "*.astro": "astro"
+  },
+  "editor.language.brackets": [],
+  "astro.enable": true
+}
