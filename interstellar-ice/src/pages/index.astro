@@ -1,17 +1,43 @@
 ---
 ---
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
-    <title>Astro</title>
+    <title>Home | My Website</title>
   </head>
   <body>
-    <h1>Astro</h1>
-	<h1>My Website</h1>
-  <p>Welcome to my website!</p>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+
+    <main>
+      <h1>My Website</h1>
+      <p>Welcome to my website!</p>
+    </main>
   </body>
 </html>
+
+<style>
+  body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto; /* Centers the site */
+    padding: 2rem;
+    color: #333;
+  }
+  nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+  }
+  nav a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+</style>
