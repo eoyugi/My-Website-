@@ -1,55 +1,67 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
 const pageTitle = "About Me";
+
 const identity = {
   firstName: "Elly",
   country: "Kenya",
   occupation: "Computer science student",
-  hobbies: ["Playing soccer", "listening to music", "partying with friends", "watching movies", "reading books"],
+  hobbies: ["playing soccer", "listening to music", "partying with friends", "watching movies", "reading books"],
 };
 
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-      <a href="/blog/">Blog</a>
-    </nav>
 
-    <h1>{pageTitle}</h1>
-    <p>I am working through Astro's introductory tutorial. This is the second page on my website!</p>
+<BaseLayout pageTitle={pageTitle}>
+  <style is:global define:vars={{skillColor, fontWeight, textCase}}>
+    h1 {
+      color: purple;
+      font-size: 3rem;
+    }
+    .skill {
+      color: var(--skillColor);
+      font-weight: var(--fontWeight);
+      text-transform: var(--textCase);
+    }
+    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
+    nav { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem; }
+    nav a { text-decoration: none; color: navy; font-weight: bold; }
+  </style>
 
-    <p>Here are a few facts about me:</p>
+  <section>
+    <h2>Who am I?</h2>
+    <p>Hello! My name is <strong>{identity.firstName}</strong>. I am based in {identity.country} and I am currently working as a {identity.occupation}.</p>
+  </section>
+
+  <section>
+    <h2>My Hobbies</h2>
+    <p>In my free time, I enjoy:</p>
     <ul>
-      <li>My name is {identity.firstName}.</li>
-      <li>I live in {identity.country} and currently am a {identity.occupation}.</li>
-      {identity.hobbies.length >= 2 &&
-        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-      }
+      {identity.hobbies.map((hobby) => <li>{hobby}</li>)}
     </ul>
-    <p>My skills are:</p>
+  </section>
+
+  <section>
+    <h2>My Technical Skills</h2>
     <ul>
-      {skills.map((skill) => <li>{skill}</li>)}
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
+  </section>
 
-    {happy && <p>I am happy to be learning Astro!</p>}
+  {happy && <p>✨ I am happy to be learning Astro!</p>}
+  {finished && <p>✅ I finished this tutorial!</p>}
 
-    {finished && <p>I finished this tutorial!</p>}
-
-    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-  </body>
-</html>
-
-<style>
-  body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
-  nav { display: flex; gap: 1rem; margin-bottom: 2rem; }
-  nav a { text-decoration: none; color: navy; font-weight: bold; }
-</style>
+  <section>
+    <h3>My Progress Goal</h3>
+    {goal === 3 ? <p>My goal is to finish this tutorial in 3 days.</p> : <p>My goal is not 3 days.</p>}
+  </section>
+</BaseLayout>
