@@ -1,36 +1,65 @@
 ---
 import Social from './Social.astro';
+
+// Update your socials array to match the requested platforms
 const socials = [
-  { platform: 'twitter', username: 'astrodotbuild' },
-  { platform: 'github', username: 'withastro' },
-  { platform: 'youtube', username: 'astrodotbuild' },
+  { platform: 'instagram', url: 'https://www.instagram.com/ellyokelo/' },
+  { platform: 'github', url: 'https://github.com/eoyugi' },
+  { platform: 'linkedin', url: 'https://www.linkedin.com/in/ellyokelo/' },
+
 ];
+
+const currentYear = new Date().getFullYear();
 ---
+
 <style>
   footer {
-    margin-top: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
   }
 
-  footer ul {
+  .copyright {
+    margin-bottom: 0.5rem;
+  }
+
+  .credit {
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: center;
     gap: 1rem;
-    flex-wrap: wrap;
   }
 
-  footer li {
-    margin: 0;
+  /* Target your Social component wrapper */
+  .social-links :global(a) {
+    display: flex;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    transition: transform 0.1s;
+  }
+
+  .social-links :global(a:hover) {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
   }
 </style>
 
 <footer>
-  <p>Learn more about my projects on:</p>
-  <ul>
+  <p class="copyright">&copy; {currentYear} Elly Okello®. All rights reserved.</p>
+  <p class="credit">Made with ❤️ by Elly</p>
+  
+  <ul class="social-links">
     {socials.map((social) => (
       <li>
-        <Social platform={social.platform} username={social.username} />
+        <Social platform={social.platform} url={social.url} />
       </li>
     ))}
   </ul>

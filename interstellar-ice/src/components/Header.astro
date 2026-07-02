@@ -3,18 +3,71 @@ import Navigation from './Navigation.astro';
 import Menu from './Menu.astro';
 import ThemeIcon from './ThemeIcon.astro';
 ---
+
 <header>
-  <nav>
-    <div>
+  <nav class="header-nav">
+    <!-- Container for your existing functional components -->
+    <div class="nav-left">
+      <Navigation />
+    </div>
+
+    <div class="nav-right">
       <ThemeIcon />
-    <Menu />
-  </div>  
-    <Navigation />
+      <Menu />
+    </div>
   </nav>
 </header>
+
 <style>
-  div {
+  /* Define colors for light and dark modes */
+  :root {
+    --text-color: #000;
+    --header-bg: #f4f4f4;
+  }
+
+  :global(.dark) {
+    --text-color: #fff;
+    --header-bg: #1a1a1a;
+  }
+
+  header {
+    padding: 1rem 2rem;
+    background-color: var(--header-bg);
+    transition: background-color 0.3s ease;
+  }
+
+  /* Apply the dynamic variable to your links and icons */
+  header :global(a), 
+  header :global(svg) {
+    color: var(--text-color);
+    fill: var(--text-color);
+    transition: color 0.3s ease;
+  }
+
+  .header-nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  header :global(ul) {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
   }
 </style>
