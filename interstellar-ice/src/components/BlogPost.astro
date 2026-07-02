@@ -1,0 +1,17 @@
+---
+const { url, title } = Astro.props;
+---
+<style>
+  .blog-post a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .blog-post a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<li class="blog-post">
+  <a href={url}>{title}</a>
+</li>
